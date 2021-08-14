@@ -3,7 +3,6 @@
     "info": {
         "title": "API desafio back-coodesh",
         "description": "Essa API tem como objetivo testar meus conhecimentos, em Back-End",
-        "termsOfService": "http://localhost:3000/terms",
         "contact": {
             "email": "jonathangrouproot@gmail.com"
         },
@@ -11,7 +10,7 @@
     },
     "servers": [
         {
-            "url": "http://localhost:3000/importUser",
+            "url": "http://localhost:3000/",
             "description": "API base"
         }
     ],
@@ -19,27 +18,181 @@
         "/": {
             "get": {
                 "summary": "Get message",
-                "description": "Essa rota será responsável por listar uma message"
+                "description": "Essa rota será responsável por listar uma message",
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Message: REST Back-end Challenge 20201209 Running"
+                    }
+                }
             }
         },
-        "/importUser": {
+        "/user/{userId}": {
+            "get": {
+                "description": "Busca de um usuário pelo Id",
+                "tags": [
+                    "User"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Busca de um usuário pelo Id",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "Busca de um usúario pelo Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/createUser": {
             "post": {
                 "summary": "Create user",
                 "description": "Essa rota será responsável por cadastrar os usuários no banco de dados",
+                "tags": [
+                    "User"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
                                 "$ref": "#/components/schemas/User"
-                            }
-                        },
-                        "examples": {
-                            "user": {
-                                "value": {
-                                    "name": "Jonathan"
+                            },
+                            "examples": {
+                                "User": {
+                                    "value": {
+                                        "gender": "male",
+                                        "name": {
+                                            "title": "Mr",
+                                            "first": "Tex",
+                                            "last": "Alderliesten"
+                                        },
+                                        "location": {
+                                            "street": {
+                                                "number": 1613,
+                                                "name": "Gerard Burgerlaan"
+                                            },
+                                            "city": "Bergen",
+                                            "state": "Limburg",
+                                            "country": "Netherlands",
+                                            "postcode": 96884,
+                                            "coordinates": {
+                                                "latitude": "5.5890",
+                                                "longitude": "178.4400"
+                                            },
+                                            "timezone": {
+                                                "offset": "-1:00",
+                                                "description": "Azores, Cape Verde Islands"
+                                            }
+                                        },
+                                        "email": "tex.alderliesten@example.com",
+                                        "login": {
+                                            "uuid": "87c424b2-df2c-447e-80bf-fc8d716cb404",
+                                            "username": "bluerabbit545",
+                                            "password": "point",
+                                            "salt": "12hMWCrP",
+                                            "md5": "30444416c0d8bb064c428274381eda40",
+                                            "sha1": "eda5326a1ee6b2999d2ac08da8dd1b7ff6eea1c7",
+                                            "sha256": "61bd84091668e992938aef8935c8d1810242b5f56d6aecb2397c07bab3548069"
+                                        },
+                                        "dob": {
+                                            "date": "1947-03-06T06:47:48.507Z",
+                                            "age": 74
+                                        },
+                                        "registered": {
+                                            "date": "2003-03-05T13:20:08.889Z",
+                                            "age": 18
+                                        },
+                                        "phone": "(674)-696-3684",
+                                        "cell": "(870)-560-4285",
+                                        "id_": {
+                                            "name": "BSN",
+                                            "value": "40628458"
+                                        },
+                                        "picture": {
+                                            "large": "https://randomuser.me/api/portraits/men/98.jpg",
+                                            "medium": "https://randomuser.me/api/portraits/med/men/98.jpg",
+                                            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/98.jpg"
+                                        },
+                                        "nat": "NL",
+                                        "imported_at": "2021-08-14T20:52:00.000Z"
+                                    }
                                 }
                             }
                         }
+                    }
+                },
+                "responses": {
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "400": {
+                        "description": "Error -> erro"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{userId}": {
+            "delete": {
+                "description": "Exclusão de um usuário pelo Id",
+                "tags": [
+                    "User"
+                ],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "summary": "Exclusão de um usuário pelo Id",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "Exclusão de um usúario pelo Id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User deleted sucessuful"
+                    },
+                    "404": {
+                        "description": "User not found"
                     }
                 }
             }
@@ -51,7 +204,7 @@
                 "type": "object",
                 "properties": {
                     "gender": {
-                        "type": "string"
+                        "type": "object"
                     },
                     "name": {
                         "type": "object"
@@ -103,8 +256,18 @@
                     },
                     "nat": {
                         "type": "object"
+                    },
+                    "imported_at": {
+                        "type": "object"
                     }
                 }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
             }
         }
     }
