@@ -1,0 +1,111 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API desafio back-coodesh",
+        "description": "Essa API tem como objetivo testar meus conhecimentos, em Back-End",
+        "termsOfService": "http://localhost:3000/terms",
+        "contact": {
+            "email": "jonathangrouproot@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000/importUser",
+            "description": "API base"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Get message",
+                "description": "Essa rota será responsável por listar uma message"
+            }
+        },
+        "/importUser": {
+            "post": {
+                "summary": "Create user",
+                "description": "Essa rota será responsável por cadastrar os usuários no banco de dados",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        },
+                        "examples": {
+                            "user": {
+                                "value": {
+                                    "name": "Jonathan"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "gender": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "object"
+                    },
+                    "location": {
+                        "type": "object"
+                    },
+                    "city": {
+                        "type": "object"
+                    },
+                    "state": {
+                        "type": "object"
+                    },
+                    "coutry": {
+                        "type": "object"
+                    },
+                    "postcode": {
+                        "type": "object"
+                    },
+                    "coordinates": {
+                        "type": "object"
+                    },
+                    "timezone": {
+                        "type": "object"
+                    },
+                    "email": {
+                        "type": "object"
+                    },
+                    "login": {
+                        "type": "object"
+                    },
+                    "dob": {
+                        "type": "object"
+                    },
+                    "registered": {
+                        "type": "object"
+                    },
+                    "phone": {
+                        "type": "object"
+                    },
+                    "cell": {
+                        "type": "object"
+                    },
+                    "id_": {
+                        "type": "object"
+                    },
+                    "picture": {
+                        "type": "object"
+                    },
+                    "nat": {
+                        "type": "object"
+                    }
+                }
+            }
+        }
+    }
+}
