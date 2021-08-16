@@ -31,3 +31,5 @@ Authentication - JWT
 <br /> 
 4° Importe o banco de dados disponível aqui  
 https://drive.google.com/drive/folders/1udQD_RkQ12eeaa055rQykw3OYsdCQLWq?usp=sharing
+<br /> 
+5° Rode o comando yarn test, para testar todas as rotas
