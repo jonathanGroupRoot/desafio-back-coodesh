@@ -1,5 +1,7 @@
 const User = require("../model/User.js");
 const api = require("../api/api");
+const jsonwebtoken = require("jsonwebtoken");
+const { api_key } = require("../key/key.json");
 
 module.exports = {
     async getMessage(req, res) {
@@ -11,11 +13,22 @@ module.exports = {
     },
     async termsServices(req,res) {
         try {
-            return res.status(200).json({ Message: "Termos de Serviço" });
+            return res.status(200).json({ Message: "Terms of service" });
         } catch (error) {
             return res.status(400).json({ Erro: error })
         }
     },  
+    async generateToken(req,res) {
+        try {
+            const token = await jsonwebtoken.sign({}, api_key, {
+                expiresIn: "60s"
+            });
+            return res.status(200).json({Token: token});
+
+        }catch(error) {
+            return res.status(400).json({ Erro: error });
+        }
+    },
     async listenUser(req, res) {
         try {
             const user = await User.findAndCountAll({ limit: 10 });
@@ -35,9 +48,9 @@ module.exports = {
             return res.status(400).json({ Erro: error });
         }
     },
-    async createUser(req, res,) {
+    async importUsers(req, res,) {
         try {
-            var { data } = await api("?results=25&noinfo");
+            var { data } = await api("?results=3&noinfo");
 
             for (var i = 0; i < data.results.length; i++) {
 
@@ -62,6 +75,32 @@ module.exports = {
             }
 
         } catch (error) {
+            return res.json({ Erro: error });
+        }
+    },
+    async createUser(req,res) {
+        try {
+            const { gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat } = req.body;
+
+            const user = await User.create({ gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat, imported_at: new Date() });
+            return res.status(200).json({User: user})
+
+        }catch(error) {
+            console.log(error)
+            return res.status(400).json({ Erro: error });
+        }
+    },
+    async updateUser(req,res) {
+        try {
+            const { userId } = req.params;
+            const { gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat } = req.body;
+
+
+            const user = await User.findByPk(userId);
+            user.update({ gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat });
+
+            return res.status(200).json({User: "Successfully updated"});
+        } catch(error) {
             return res.json({ Erro: error });
         }
     },

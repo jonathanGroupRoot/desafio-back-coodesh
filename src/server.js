@@ -7,10 +7,10 @@ require ("./database/index.js");
 
 var cron = require("node-cron");
 
-const { createUser } = require("./controllers/UserController.js");
+const { importUsers } = require("./controllers/UserController.js");
 
-cron.schedule('52 17 * * * ', () => {
- createUser()
+cron.schedule('00 20 * * * ', () => {
+ importUsers()
 },{ scheduled: true, timezone: "America/Sao_Paulo"});
 
 app.listen(3000, () => {
