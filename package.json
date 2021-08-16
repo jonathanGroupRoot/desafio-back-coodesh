@@ -12,6 +12,7 @@
   "dependencies": {
     "@types/sequelize": "^4.28.10",
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "date-fns": "^2.23.0",
     "express": "^4.17.1",
     "jest": "^27.0.6",
