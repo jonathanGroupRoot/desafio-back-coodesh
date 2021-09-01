@@ -64,9 +64,6 @@ Documentation - Swagger Open api 3.0
     // Instalar dependências
     yarn
 
-    //Rodar-as-migrations
-    yarn sequelize db:migrate
-
     // Iniciar projeto
     yarn start
     
