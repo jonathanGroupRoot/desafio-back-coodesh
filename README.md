@@ -1,6 +1,5 @@
 <p align="center">🎉
   <a href="#-sobre"> Sobre </a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-   <a href="#-Description">Descrição</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-material-de-apoio">Material de apoio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#-como-baixar">Como baixar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
@@ -39,7 +38,7 @@ Documentation - Swagger Open api 3.0
 
 
 ## 👍🏻 Como baixar
-    ```
+    
     // Clonar repositório 
     git clone https://github.com/jonathanGroupRoot/desafio-back-coodesh
 
@@ -47,7 +46,8 @@ Documentation - Swagger Open api 3.0
     cd desafio-back-coodesh
 
     //Importe o banco Mysql disponível nesse link 👇
-##  - [BancoMysql](https://drive.google.com/drive/folders/1udQD_RkQ12eeaa055rQykw3OYsdCQLWq?usp=sharing)
+    <br/>
+- [BancoMysql](https://drive.google.com/drive/folders/1udQD_RkQ12eeaa055rQykw3OYsdCQLWq?usp=sharing)
 
     //Configurar o host-do-banco em desafio-back-coodesh/config/database
 
@@ -59,7 +59,7 @@ Documentation - Swagger Open api 3.0
 
     // Iniciar projeto
     yarn start
-    ```
+    
 
 
 <h3 align="center">👨‍💻 Desenvolvido por Jonathan Vinicius Braz Silva 👨‍💻</h3>
