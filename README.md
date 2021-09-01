@@ -9,8 +9,6 @@
 
 Esse projeto foi desenvolvido com o objetivo de ensinar testar meus conhecimentos em NodeJs.
 
-# Description -  Essa API tem como objetivo testar meus conhecimentos, em Back-End 
-
 A empresa Pharma Inc, está trabalhando em um projeto em colaboração com sua base de clientes para facilitar a gestão e visualização da informação dos seus pacientes de maneira simples e objetiva em um Dashboard onde podemos listar, filtrar e expandir os dados disponíveis. O seu objetivo nesse projeto, é trabalhar no desenvolvimento da REST API da empresa Pharma Inc seguindo os requisitos propostos neste desafio. 
 
 ## ✍🏻 Ferramentas e Skill
@@ -41,7 +39,7 @@ Documentation - Swagger Open api 3.0
 
 
 ## 👍🏻 Como baixar
-
+    ```
     // Clonar repositório 
     git clone https://github.com/jonathanGroupRoot/desafio-back-coodesh
 
@@ -61,6 +59,7 @@ Documentation - Swagger Open api 3.0
 
     // Iniciar projeto
     yarn start
+    ```
 
 
 <h3 align="center">👨‍💻 Desenvolvido por Jonathan Vinicius Braz Silva 👨‍💻</h3>
