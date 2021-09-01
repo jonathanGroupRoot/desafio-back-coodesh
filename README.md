@@ -11,17 +11,27 @@ Esse projeto foi desenvolvido com o objetivo de ensinar testar meus conhecimento
 A empresa Pharma Inc, está trabalhando em um projeto em colaboração com sua base de clientes para facilitar a gestão e visualização da informação dos seus pacientes de maneira simples e objetiva em um Dashboard onde podemos listar, filtrar e expandir os dados disponíveis. O seu objetivo nesse projeto, é trabalhar no desenvolvimento da REST API da empresa Pharma Inc seguindo os requisitos propostos neste desafio. 
 
 ## ✍🏻 Ferramentas e Skill
-
+<br/>
 Linguagem Javascript - Runtime Enviroment NodeJs.
-Framework: Express
-Client HTTP - Axios
+<br/>
+Framework: Express.
+<br/>
+Client HTTP - Axios.
+<br/>
 ORM - Sequelize.
+<br/>
 Banco - MYSQL.
+<br/>
 Authentication - JWT.
+<br/>
 Bcrypt - Método de criptografia do tipo hash para senhas baseado no Blowfish.
+<br/>
 CRON - NodeCron
+<br/>
 TDD - Jest & SuperTest
+<br/>
 Documentation - Swagger Open api 3.0
+<br/>
 
 ## 🗂 Material de apoio
 
@@ -47,7 +57,7 @@ Documentation - Swagger Open api 3.0
 
     //Importe o banco Mysql disponível nesse link 👇
     <br/>
-- [BancoMysql](https://drive.google.com/drive/folders/1udQD_RkQ12eeaa055rQykw3OYsdCQLWq?usp=sharing)
+    https://drive.google.com/drive/folders/1udQD_RkQ12eeaa055rQykw3OYsdCQLWq?usp=sharing
 
     //Configurar o host-do-banco em desafio-back-coodesh/config/database
 
