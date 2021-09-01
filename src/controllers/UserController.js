@@ -2,6 +2,7 @@ const User = require("../model/User.js");
 const api = require("../api/api");
 const jsonwebtoken = require("jsonwebtoken");
 const { api_key } = require("../key/key.json");
+const axios = require("axios");
 
 module.exports = {
     async getMessage(req, res) {
@@ -11,21 +12,21 @@ module.exports = {
             return res.status(400).json({ Erro: error })
         }
     },
-    async termsServices(req,res) {
+    async termsServices(req, res) {
         try {
             return res.status(200).json({ Message: "Terms of service" });
         } catch (error) {
             return res.status(400).json({ Erro: error })
         }
-    },  
-    async generateToken(req,res) {
+    },
+    async generateToken(req, res) {
         try {
             const token = await jsonwebtoken.sign({}, api_key, {
                 expiresIn: "60s"
             });
-            return res.status(200).json({Token: token});
+            return res.status(200).json({ Token: token });
 
-        }catch(error) {
+        } catch (error) {
             return res.status(400).json({ Erro: error });
         }
     },
@@ -71,26 +72,26 @@ module.exports = {
                 }]);
             }
             if (res !== undefined) {
-                return res.status(200).json({User: user})
+                return res.status(200).json({ User: user })
             }
 
         } catch (error) {
             return res.json({ Erro: error });
         }
     },
-    async createUser(req,res) {
+    async createUser(req, res) {
         try {
             const { gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat } = req.body;
 
             const user = await User.create({ gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat, imported_at: new Date() });
-            return res.status(200).json({User: user})
+            return res.status(200).json({ User: user })
 
-        }catch(error) {
+        } catch (error) {
             console.log(error)
             return res.status(400).json({ Erro: error });
         }
     },
-    async updateUser(req,res) {
+    async updateUser(req, res) {
         try {
             const { userId } = req.params;
             const { gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat } = req.body;
@@ -99,8 +100,8 @@ module.exports = {
             const user = await User.findByPk(userId);
             user.update({ gender, name, location, email, login, dob, registered, phone, cell, id_, picture, nat });
 
-            return res.status(200).json({User: "Successfully updated"});
-        } catch(error) {
+            return res.status(200).json({ User: "Successfully updated" });
+        } catch (error) {
             return res.json({ Erro: error });
         }
     },
@@ -114,7 +115,35 @@ module.exports = {
         } catch (error) {
             return res.json({ Erro: error });
         }
-    }
+    },
+    async scrapping(req, res) {
+
+
+        try {
+            var arrayy = [];
+            const cheerio = require("cheerio");
+
+            const siteUrl =
+                "https://futures.tradingcharts.com/marketquotes/ZS.html";
+
+            const { data } = await axios({
+                method: "GET",
+                url: siteUrl,
+            });
+
+
+            const $ = cheerio.load(data);
+            $("#tblQuote > tbody > tr:nth-child(2) > td:nth-child(7)").text()
+
+            arrayy.push($.text());
+          
+           return res.json(arrayy)
+        } catch (error) {
+            //
+            return res.status(400).json({ Erro: error })
+        }
+    },
+
 }
 
 
